@@ -1,0 +1,241 @@
+<?php
+
+return [
+    'common' => [
+        'actions' => 'Actions',
+        'create' => 'Create',
+        'edit' => 'Edit',
+        'update' => 'Update',
+        'new' => 'New',
+        'cancel' => 'Cancel',
+        'save' => 'Save',
+        'delete' => 'Delete',
+        'delete_selected' => 'Delete selected',
+        'search' => 'Search...',
+        'back' => 'Back to Index',
+        'are_you_sure' => 'Are you sure?',
+        'no_items_found' => 'No items found',
+        'created' => 'Successfully created',
+        'saved' => 'Saved successfully',
+        'removed' => 'Successfully removed',
+    ],
+
+    'tickets' => [
+        'name' => 'Tickets',
+        'index_title' => 'Tickets List',
+        'new_title' => 'New Ticket',
+        'create_title' => 'Create Ticket',
+        'edit_title' => 'Edit Ticket',
+        'show_title' => 'Show Ticket',
+        'inputs' => [
+            'sender_id' => 'Sender',
+            'reciever_id' => 'Reciever',
+            'vehicle_id' => 'Vehicle',
+            'driver_id' => 'Driver',
+            'name' => 'Name',
+            'description' => 'Description',
+            'meta' => 'Meta',
+            'price' => 'Price',
+            'datetime_start' => 'Datetime Start',
+            'datetime_end' => 'Datetime End',
+        ],
+    ],
+
+    'ticket_items' => [
+        'name' => 'Ticket Items',
+        'index_title' => 'Items List',
+        'new_title' => 'New Item',
+        'create_title' => 'Create Item',
+        'edit_title' => 'Edit Item',
+        'show_title' => 'Show Item',
+        'inputs' => [
+            'name' => 'Name',
+            'description' => 'Description',
+            'meta' => 'Meta',
+            'price' => 'Price',
+        ],
+    ],
+
+    'items' => [
+        'name' => 'Items',
+        'index_title' => 'Items List',
+        'new_title' => 'New Item',
+        'create_title' => 'Create Item',
+        'edit_title' => 'Edit Item',
+        'show_title' => 'Show Item',
+        'inputs' => [
+            'track_id' => 'Tracks',
+            'name' => 'Name',
+            'description' => 'Description',
+            'meta' => 'Meta',
+            'price' => 'Price',
+        ],
+    ],
+
+    'teams' => [
+        'name' => 'Teams',
+        'index_title' => 'Teams List',
+        'new_title' => 'New Team',
+        'create_title' => 'Create Team',
+        'edit_title' => 'Edit Team',
+        'show_title' => 'Show Team',
+        'inputs' => [
+            'owner_id' => 'Owner',
+            'name' => 'Name',
+            'slug' => 'Slug',
+            'address' => 'Address',
+            'phone' => 'Phone',
+            'meta' => 'Meta',
+        ],
+    ],
+
+    'categories' => [
+        'name' => 'Categories',
+        'index_title' => 'Categories List',
+        'new_title' => 'New Category',
+        'create_title' => 'Create Category',
+        'edit_title' => 'Edit Category',
+        'show_title' => 'Show Category',
+        'inputs' => [
+            'parent_category_id' => 'Parent Category',
+            'name' => 'Name',
+            'slug' => 'Slug',
+            'description' => 'Description',
+            'meta' => 'Meta',
+            'file' => 'File',
+        ],
+    ],
+
+    'users' => [
+        'name' => 'Users',
+        'index_title' => 'Users List',
+        'new_title' => 'New User',
+        'create_title' => 'Create User',
+        'edit_title' => 'Edit User',
+        'show_title' => 'Show User',
+        'inputs' => [
+            'dni' => 'Dni',
+            'name' => 'Name',
+            'first_name' => 'First Name',
+            'last_name' => 'Last Name',
+            'email' => 'Email',
+            'password' => 'Password',
+            'meta' => 'Meta',
+        ],
+    ],
+
+    'user_my_teams' => [
+        'name' => 'User My Teams',
+        'index_title' => 'Teams List',
+        'new_title' => 'New Team',
+        'create_title' => 'Create Team',
+        'edit_title' => 'Edit Team',
+        'show_title' => 'Show Team',
+        'inputs' => [
+            'name' => 'Name',
+            'slug' => 'Slug',
+            'address' => 'Address',
+            'phone' => 'Phone',
+            'meta' => 'Meta',
+        ],
+    ],
+
+    'category_childrem_categories' => [
+        'name' => 'Category Childrem Categories',
+        'index_title' => 'Categories List',
+        'new_title' => 'New Category',
+        'create_title' => 'Create Category',
+        'edit_title' => 'Edit Category',
+        'show_title' => 'Show Category',
+        'inputs' => [
+            'name' => 'Name',
+            'slug' => 'Slug',
+            'description' => 'Description',
+            'meta' => 'Meta',
+            'file' => 'File',
+        ],
+    ],
+
+    'comments' => [
+        'name' => 'Comments',
+        'index_title' => 'Comments List',
+        'new_title' => 'New Comment',
+        'create_title' => 'Create Comment',
+        'edit_title' => 'Edit Comment',
+        'show_title' => 'Show Comment',
+        'inputs' => [
+            'name' => 'Name',
+            'description' => 'Description',
+            'file' => 'File',
+        ],
+    ],
+
+    'roads' => [
+        'name' => 'Roads',
+        'index_title' => 'Roads List',
+        'new_title' => 'New Road',
+        'create_title' => 'Create Road',
+        'edit_title' => 'Edit Road',
+        'show_title' => 'Show Road',
+        'inputs' => [
+            'name' => 'Name',
+            'address_start_id' => 'Address Start',
+            'address_end_id' => 'Address End',
+            'meta' => 'Meta',
+            'price' => 'Price',
+        ],
+    ],
+
+    'road_waypoints' => [
+        'name' => 'Road Waypoints',
+        'index_title' => 'Addresses List',
+        'new_title' => 'New Address',
+        'create_title' => 'Create Address',
+        'edit_title' => 'Edit Address',
+        'show_title' => 'Show Address',
+        'inputs' => [
+            'name' => 'Name',
+            'address' => 'Address',
+            'phone' => 'Phone',
+            'meta' => 'Meta',
+        ],
+    ],
+
+    'addresses' => [
+        'name' => 'Addresses',
+        'index_title' => 'Addresses List',
+        'new_title' => 'New Address',
+        'create_title' => 'Create Address',
+        'edit_title' => 'Edit Address',
+        'show_title' => 'Show Address',
+        'inputs' => [
+            'waypoint_road_id' => 'Road',
+            'name' => 'Name',
+            'address' => 'Address',
+            'phone' => 'Phone',
+            'meta' => 'Meta',
+        ],
+    ],
+
+    'roles' => [
+        'name' => 'Roles',
+        'index_title' => 'Roles List',
+        'create_title' => 'Create Role',
+        'edit_title' => 'Edit Role',
+        'show_title' => 'Show Role',
+        'inputs' => [
+            'name' => 'Name',
+        ],
+    ],
+
+    'permissions' => [
+        'name' => 'Permissions',
+        'index_title' => 'Permissions List',
+        'create_title' => 'Create Permission',
+        'edit_title' => 'Edit Permission',
+        'show_title' => 'Show Permission',
+        'inputs' => [
+            'name' => 'Name',
+        ],
+    ],
+];
