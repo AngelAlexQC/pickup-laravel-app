@@ -2,35 +2,43 @@
 
 namespace App\Models;
 
-use App\Models\Scopes\Searchable;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Laravel\Jetstream\Events\TeamCreated;
+use Laravel\Jetstream\Events\TeamDeleted;
+use Laravel\Jetstream\Events\TeamUpdated;
+use Laravel\Jetstream\Team as JetstreamTeam;
 
-class Team extends Model
+class Team extends JetstreamTeam
 {
-    use SoftDeletes;
     use HasFactory;
-    use Searchable;
 
-    protected $fillable = [
-        'name',
-        'slug',
-        'address',
-        'phone',
-        'owner_id',
-        'meta',
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'personal_team' => 'boolean',
     ];
 
-    protected $searchableFields = ['*'];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'personal_team',
+    ];
 
-    public function owner()
-    {
-        return $this->belongsTo(User::class, 'owner_id');
-    }
-
-    public function member()
-    {
-        return $this->belongsToMany(User::class, 'team_member');
-    }
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => TeamCreated::class,
+        'updated' => TeamUpdated::class,
+        'deleted' => TeamDeleted::class,
+    ];
 }
