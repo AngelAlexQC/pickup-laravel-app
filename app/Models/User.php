@@ -2,83 +2,60 @@
 
 namespace App\Models;
 
-use Laravel\Sanctum\HasApiTokens;
-use App\Models\Scopes\Searchable;
-use Spatie\Permission\Traits\HasRoles;
-use Laravel\Jetstream\HasProfilePhoto;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Fortify\TwoFactorAuthenticatable;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
+use Laravel\Jetstream\HasProfilePhoto;
+use Laravel\Jetstream\HasTeams;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable;
-    use HasRoles;
-    use HasFactory;
-    use Searchable;
-    use SoftDeletes;
     use HasApiTokens;
+    use HasFactory;
     use HasProfilePhoto;
+    use HasTeams;
+    use Notifiable;
     use TwoFactorAuthenticatable;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
-        'dni',
-        'name',
-        'first_name',
-        'last_name',
-        'email',
-        'password',
-        'meta',
+        'name', 'email', 'password',
     ];
 
-    protected $searchableFields = ['*'];
-
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
     protected $hidden = [
         'password',
         'remember_token',
-        'two_factor_secret',
         'two_factor_recovery_codes',
+        'two_factor_secret',
     ];
 
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-    public function my_teams()
-    {
-        return $this->hasMany(Team::class, 'owner_id');
-    }
-
-    public function tickets_recivied()
-    {
-        return $this->hasMany(Ticket::class, 'reciever_id');
-    }
-
-    public function tickets_sended()
-    {
-        return $this->hasMany(Ticket::class, 'sender_id');
-    }
-
-    public function tickets()
-    {
-        return $this->hasMany(Ticket::class, 'driver_id');
-    }
-
-    public function vehicles()
-    {
-        return $this->belongsToMany(Vehicle::class);
-    }
-
-    public function teams()
-    {
-        return $this->belongsToMany(Team::class, 'team_member');
-    }
-
-    public function isSuperAdmin()
-    {
-        return $this->hasRole('super-admin');
-    }
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'profile_photo_url',
+    ];
 }

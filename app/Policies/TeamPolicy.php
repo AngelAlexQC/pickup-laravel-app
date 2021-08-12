@@ -11,96 +11,96 @@ class TeamPolicy
     use HandlesAuthorization;
 
     /**
-     * Determine whether the team can view any models.
+     * Determine whether the user can view any models.
      *
-     * @param  App\Models\User  $user
+     * @param  \App\Models\User  $user
      * @return mixed
      */
     public function viewAny(User $user)
     {
-        return $user->hasPermissionTo('list teams');
+        return true;
     }
 
     /**
-     * Determine whether the team can view the model.
+     * Determine whether the user can view the model.
      *
-     * @param  App\Models\User  $user
-     * @param  App\Models\Team  $model
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Team  $team
      * @return mixed
      */
-    public function view(User $user, Team $model)
+    public function view(User $user, Team $team)
     {
-        return $user->hasPermissionTo('view teams');
+        return $user->belongsToTeam($team);
     }
 
     /**
-     * Determine whether the team can create models.
+     * Determine whether the user can create models.
      *
-     * @param  App\Models\User  $user
+     * @param  \App\Models\User  $user
      * @return mixed
      */
     public function create(User $user)
     {
-        return $user->hasPermissionTo('create teams');
+        return true;
     }
 
     /**
-     * Determine whether the team can update the model.
+     * Determine whether the user can update the model.
      *
-     * @param  App\Models\User  $user
-     * @param  App\Models\Team  $model
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Team  $team
      * @return mixed
      */
-    public function update(User $user, Team $model)
+    public function update(User $user, Team $team)
     {
-        return $user->hasPermissionTo('update teams');
+        return $user->ownsTeam($team);
     }
 
     /**
-     * Determine whether the team can delete the model.
+     * Determine whether the user can add team members.
      *
-     * @param  App\Models\User  $user
-     * @param  App\Models\Team  $model
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Team  $team
      * @return mixed
      */
-    public function delete(User $user, Team $model)
+    public function addTeamMember(User $user, Team $team)
     {
-        return $user->hasPermissionTo('delete teams');
+        return $user->ownsTeam($team);
     }
 
     /**
-     * Determine whether the user can delete multiple instances of the model.
+     * Determine whether the user can update team member permissions.
      *
-     * @param  App\Models\User  $user
-     * @param  App\Models\Team  $model
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Team  $team
      * @return mixed
      */
-    public function deleteAny(User $user)
+    public function updateTeamMember(User $user, Team $team)
     {
-        return $user->hasPermissionTo('delete teams');
+        return $user->ownsTeam($team);
     }
 
     /**
-     * Determine whether the team can restore the model.
+     * Determine whether the user can remove team members.
      *
-     * @param  App\Models\User  $user
-     * @param  App\Models\Team  $model
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Team  $team
      * @return mixed
      */
-    public function restore(User $user, Team $model)
+    public function removeTeamMember(User $user, Team $team)
     {
-        return false;
+        return $user->ownsTeam($team);
     }
 
     /**
-     * Determine whether the team can permanently delete the model.
+     * Determine whether the user can delete the model.
      *
-     * @param  App\Models\User  $user
-     * @param  App\Models\Team  $model
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Team  $team
      * @return mixed
      */
-    public function forceDelete(User $user, Team $model)
+    public function delete(User $user, Team $team)
     {
-        return false;
+        return $user->ownsTeam($team);
     }
 }
